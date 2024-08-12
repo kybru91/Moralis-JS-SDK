@@ -1,5 +1,7 @@
 # @moralisweb3/test-utils
 
+## 2.27.2
+
 ## 2.27.1
 
 ## 2.27.0

@@ -1,5 +1,14 @@
 # @moralisweb3/evm-utils
 
+## 2.27.2
+
+### Patch Changes
+
+- [#1228](https://github.com/MoralisWeb3/Moralis-JS-SDK/pull/1228) [`4434f6e915`](https://github.com/MoralisWeb3/Moralis-JS-SDK/commit/4434f6e9153ce0a272650b6c138e0f1fb743c8c8) Thanks [@b4rtaz](https://github.com/b4rtaz)! - Added a new method to the EVM API: `getNFTTradesByToken`.
+
+- Updated dependencies []:
+  - @moralisweb3/common-core@2.27.2
+
 ## 2.27.1
 
 ### Patch Changes
