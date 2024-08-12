@@ -1,4 +1,5 @@
 export * from './GetNFTTradesOperation';
+export * from './GetNFTTradesByTokenOperation';
 export * from './GetNFTContractSalePricesOperation';
 export * from './GetNFTSalePricesOperation';
 export * from './GetMultipleTokenPricesOperation';

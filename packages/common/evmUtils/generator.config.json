@@ -131,7 +131,8 @@
           "getDefiPositionsSummary",
           "getWalletProfitabilitySummary",
           "getWalletProfitability",
-          "getTopProfitableWalletPerToken"
+          "getTopProfitableWalletPerToken",
+          "getNFTTradesByToken"
         ]
       }
     }

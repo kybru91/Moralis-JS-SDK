@@ -1,4 +1,5 @@
 import { GetNFTTradesOperation } from './GetNFTTradesOperation';
+import { GetNFTTradesByTokenOperation } from './GetNFTTradesByTokenOperation';
 import { GetNFTContractSalePricesOperation } from './GetNFTContractSalePricesOperation';
 import { GetNFTSalePricesOperation } from './GetNFTSalePricesOperation';
 import { GetMultipleTokenPricesOperation } from './GetMultipleTokenPricesOperation';
@@ -32,6 +33,7 @@ import { GetTopProfitableWalletPerTokenOperation } from './GetTopProfitableWalle
 
 export const operations = [
   GetNFTTradesOperation,
+  GetNFTTradesByTokenOperation,
   GetNFTContractSalePricesOperation,
   GetNFTSalePricesOperation,
   GetMultipleTokenPricesOperation,

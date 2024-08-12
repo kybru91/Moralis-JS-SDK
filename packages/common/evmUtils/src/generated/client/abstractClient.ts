@@ -1,5 +1,6 @@
 import { GetNFTTradesOperation, GetNFTTradesOperationRequest, GetNFTTradesOperationRequestJSON } from '../operations/GetNFTTradesOperation';
 import { EvmTradeCollection, EvmTradeCollectionJSON } from '../types/EvmTradeCollection';
+import { GetNFTTradesByTokenOperation, GetNFTTradesByTokenOperationRequest, GetNFTTradesByTokenOperationRequestJSON } from '../operations/GetNFTTradesByTokenOperation';
 import { GetNFTContractSalePricesOperation, GetNFTContractSalePricesOperationRequest, GetNFTContractSalePricesOperationRequestJSON } from '../operations/GetNFTContractSalePricesOperation';
 import { EvmSoldPrice, EvmSoldPriceJSON } from '../types/EvmSoldPrice';
 import { GetNFTSalePricesOperation, GetNFTSalePricesOperationRequest, GetNFTSalePricesOperationRequestJSON } from '../operations/GetNFTSalePricesOperation';
@@ -214,6 +215,33 @@ export abstract class AbstractClient {
       EvmTradeCollection,
       EvmTradeCollectionJSON
     >(GetNFTTradesOperation),
+    /**
+     * @description Get trades of NFTs for a given contract and token ID.
+     * @param request Request with parameters.
+     * @param {Object} request.address The address of the NFT contract
+     * @param {String} request.tokenId The token ID of the NFT contract
+     * @param {Object} [request.chain] The chain to query (optional)
+     * @param {Number} [request.fromBlock] The minimum block number from which to get the transfers
+     * * Provide the param 'from_block' or 'from_date'
+     * * If 'from_date' and 'from_block' are provided, 'from_block' will be used. (optional)
+     * @param {Number} [request.toBlock] The block number to get the trades from (optional)
+     * @param {Date} [request.fromDate] The start date from which to get the transfers (format in seconds or datestring accepted by momentjs)
+     * * Provide the param 'from_block' or 'from_date'
+     * * If 'from_date' and 'from_block' are provided, 'from_block' will be used. (optional)
+     * @param {Date} [request.toDate] The end date from which to get the transfers (format in seconds or datestring accepted by momentjs)
+     * * Provide the param 'to_block' or 'to_date'
+     * * If 'to_date' and 'to_block' are provided, 'to_block' will be used. (optional)
+     * @param {String} [request.cursor] The cursor returned in the previous response (used for getting the next page). (optional)
+     * @param {Number} [request.limit] The desired page size of the result. (optional)
+     * @param {Boolean} [request.nftMetadata] Include the NFT Metadata of the NFT Token (optional)
+     * @returns {Object} Response for the request.
+     */
+    getNFTTradesByToken: this.createEndpoint<
+      GetNFTTradesByTokenOperationRequest,
+      GetNFTTradesByTokenOperationRequestJSON,
+      EvmTradeCollection,
+      EvmTradeCollectionJSON
+    >(GetNFTTradesByTokenOperation),
     /**
      * @description Get the sold price for an NFT contract for the last x days (only trades paid in ETH).
      * @param request Request with parameters.
