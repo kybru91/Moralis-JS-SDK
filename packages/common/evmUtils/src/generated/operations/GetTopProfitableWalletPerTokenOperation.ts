@@ -12,7 +12,7 @@ export interface GetTopProfitableWalletPerTokenOperationRequest {
    */
   readonly address: EvmAddressInput | EvmAddress;
   /**
-   * @description Timeframe in days for which profitability is calculated, Options include 'all', '7', '30', '60', '90' default is 'all'.
+   * @description Timeframe in days for which profitability is calculated, Options include 'all', '7', '30' default is 'all'.
    */
   readonly days?: string;
   /**

@@ -1,7 +1,7 @@
 import { EvmAddress, EvmAddressInput, EvmAddressJSON, EvmInternalTransaction, EvmInternalTransactionInput, EvmInternalTransactionJSON } from '../../dataTypes';
 import { BigNumber, BigNumberInput, BigNumberJSON } from '@moralisweb3/common-core';
 import { EvmETransactionCategory, EvmETransactionCategoryValue, EvmETransactionCategoryInput, EvmETransactionCategoryJSON } from '../types/EvmETransactionCategory';
-import { EvmResolveContractInteractionResponse, EvmResolveContractInteractionResponseInput, EvmResolveContractInteractionResponseJSON } from '../types/EvmResolveContractInteractionResponse';
+import { EvmResolveContractInteractionResponse, EvmResolveContractInteractionResponseValue, EvmResolveContractInteractionResponseInput, EvmResolveContractInteractionResponseJSON } from '../types/EvmResolveContractInteractionResponse';
 import { EvmWalletHistoryNftTransfer, EvmWalletHistoryNftTransferInput, EvmWalletHistoryNftTransferJSON } from '../types/EvmWalletHistoryNftTransfer';
 import { EvmWalletHistoryErc20Transfer, EvmWalletHistoryErc20TransferInput, EvmWalletHistoryErc20TransferJSON } from '../types/EvmWalletHistoryErc20Transfer';
 import { EvmNativeTransfer, EvmNativeTransferInput, EvmNativeTransferJSON } from '../types/EvmNativeTransfer';
@@ -70,7 +70,7 @@ export interface EvmWalletHistoryTransactionJSON {
   readonly block_hash: string;
   readonly internal_transactions?: EvmInternalTransactionJSON[];
   readonly category: EvmETransactionCategoryJSON;
-  readonly contract_interactions?: EvmResolveContractInteractionResponseJSON;
+  readonly contract_interactions: EvmResolveContractInteractionResponseJSON;
   readonly possible_spam?: boolean;
   readonly method_label?: string;
   readonly summary: string;
@@ -106,7 +106,7 @@ export interface EvmWalletHistoryTransactionInput {
   readonly blockHash: string;
   readonly internalTransactions?: EvmInternalTransactionInput[] | EvmInternalTransaction[];
   readonly category: EvmETransactionCategoryInput | EvmETransactionCategoryValue;
-  readonly contractInteractions?: EvmResolveContractInteractionResponseInput | EvmResolveContractInteractionResponse;
+  readonly contractInteractions: EvmResolveContractInteractionResponseInput | EvmResolveContractInteractionResponseValue;
   readonly possibleSpam?: boolean;
   readonly methodLabel?: string;
   readonly summary: string;
@@ -151,7 +151,7 @@ export class EvmWalletHistoryTransaction {
       blockHash: json.block_hash,
       internalTransactions: json.internal_transactions ? json.internal_transactions.map((item) => EvmInternalTransaction.fromJSON(item)) : undefined,
       category: EvmETransactionCategory.fromJSON(json.category),
-      contractInteractions: json.contract_interactions ? EvmResolveContractInteractionResponse.fromJSON(json.contract_interactions) : undefined,
+      contractInteractions: EvmResolveContractInteractionResponse.fromJSON(json.contract_interactions),
       possibleSpam: json.possible_spam,
       methodLabel: json.method_label,
       summary: json.summary,
@@ -239,7 +239,7 @@ export class EvmWalletHistoryTransaction {
   /**
    * @description The contract interactions that happend in the transaction
    */
-  public readonly contractInteractions?: EvmResolveContractInteractionResponse;
+  public readonly contractInteractions: EvmResolveContractInteractionResponseValue;
   /**
    * @description Is transaction possible spam
    */
@@ -283,7 +283,7 @@ export class EvmWalletHistoryTransaction {
     this.blockHash = input.blockHash;
     this.internalTransactions = input.internalTransactions ? input.internalTransactions.map((item) => EvmInternalTransaction.create(item)) : undefined;
     this.category = EvmETransactionCategory.create(input.category);
-    this.contractInteractions = input.contractInteractions ? EvmResolveContractInteractionResponse.create(input.contractInteractions) : undefined;
+    this.contractInteractions = EvmResolveContractInteractionResponse.create(input.contractInteractions);
     this.possibleSpam = input.possibleSpam;
     this.methodLabel = input.methodLabel;
     this.summary = input.summary;
@@ -320,7 +320,7 @@ export class EvmWalletHistoryTransaction {
       block_hash: this.blockHash,
       internal_transactions: this.internalTransactions ? this.internalTransactions.map((item) => item.toJSON()) : undefined,
       category: this.category,
-      contract_interactions: this.contractInteractions ? this.contractInteractions.toJSON() : undefined,
+      contract_interactions: EvmResolveContractInteractionResponse.toJSON(this.contractInteractions),
       possible_spam: this.possibleSpam,
       method_label: this.methodLabel,
       summary: this.summary,

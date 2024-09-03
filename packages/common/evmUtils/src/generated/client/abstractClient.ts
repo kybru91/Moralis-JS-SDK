@@ -9,6 +9,8 @@ import { EvmErc20Price, EvmErc20PriceJSON } from '../types/EvmErc20Price';
 import { EvmGetMultipleTokenPricesDto, EvmGetMultipleTokenPricesDtoInput, EvmGetMultipleTokenPricesDtoJSON } from '../types/EvmGetMultipleTokenPricesDto';
 import { GetTokenOwnersOperation, GetTokenOwnersOperationRequest, GetTokenOwnersOperationRequestJSON } from '../operations/GetTokenOwnersOperation';
 import { EvmErc20TokenOwnerCollection, EvmErc20TokenOwnerCollectionJSON } from '../types/EvmErc20TokenOwnerCollection';
+import { GetWalletApprovalsOperation, GetWalletApprovalsOperationRequest, GetWalletApprovalsOperationRequestJSON } from '../operations/GetWalletApprovalsOperation';
+import { EvmWalletApprovals, EvmWalletApprovalsJSON } from '../types/EvmWalletApprovals';
 import { GetWalletHistoryOperation, GetWalletHistoryOperationRequest, GetWalletHistoryOperationRequestJSON } from '../operations/GetWalletHistoryOperation';
 import { EvmWalletHistory, EvmWalletHistoryJSON } from '../types/EvmWalletHistory';
 import { GetWalletTokenBalancesPriceOperation, GetWalletTokenBalancesPriceOperationRequest, GetWalletTokenBalancesPriceOperationRequestJSON } from '../operations/GetWalletTokenBalancesPriceOperation';
@@ -368,7 +370,7 @@ export abstract class AbstractClient {
      * @description Retrieves a list of the top profitable wallets for a specific ERC20 token.
      * @param request Request with parameters.
      * @param {Object} request.address The ERC20 token address.
-     * @param {String} [request.days] Timeframe in days for which profitability is calculated, Options include 'all', '7', '30', '60', '90' default is 'all'. (optional)
+     * @param {String} [request.days] Timeframe in days for which profitability is calculated, Options include 'all', '7', '30' default is 'all'. (optional)
      * @param {Object} [request.chain] The chain to query (optional)
      * @returns {Object} Response for the request.
      */
@@ -420,6 +422,21 @@ export abstract class AbstractClient {
     >(ReviewContractsOperation),
   };
   public readonly wallets = {
+    /**
+     * @description Retrieve active ERC20 token approvals for the specified wallet address
+     * @param request Request with parameters.
+     * @param {Object} request.address The wallet address from which to retrieve active ERC20 token approvals
+     * @param {Object} [request.chain] The chain to query (optional)
+     * @param {Number} [request.limit] The desired page size of the result. (optional)
+     * @param {String} [request.cursor] The cursor returned in the previous response (used for getting the next page). (optional)
+     * @returns {Object} Response for the request.
+     */
+    getWalletApprovals: this.createEndpoint<
+      GetWalletApprovalsOperationRequest,
+      GetWalletApprovalsOperationRequestJSON,
+      EvmWalletApprovals,
+      EvmWalletApprovalsJSON
+    >(GetWalletApprovalsOperation),
     /**
      * @description Get the complete history of a wallet
      * @param request Request with parameters.

@@ -20,8 +20,6 @@ import { EvmAddress, EvmAddressInput, EvmAddressJSON } from '../../dataTypes';
 // - symbol ($ref: #/components/schemas/WalletProfitabilityTokenData/properties/symbol)
 // - decimals ($ref: #/components/schemas/WalletProfitabilityTokenData/properties/decimals)
 // - logo ($ref: #/components/schemas/WalletProfitabilityTokenData/properties/logo)
-// - logo_hash ($ref: #/components/schemas/WalletProfitabilityTokenData/properties/logo_hash)
-// - thumbnail ($ref: #/components/schemas/WalletProfitabilityTokenData/properties/thumbnail)
 // - possible_spam ($ref: #/components/schemas/WalletProfitabilityTokenData/properties/possible_spam)
 
 export interface EvmWalletProfitabilityTokenDataJSON {
@@ -42,9 +40,7 @@ export interface EvmWalletProfitabilityTokenDataJSON {
   readonly symbol: string;
   readonly decimals: string;
   readonly logo: string;
-  readonly logo_hash: string;
-  readonly thumbnail: string;
-  readonly possible_spam?: boolean;
+  readonly possible_spam: boolean;
 }
 
 export interface EvmWalletProfitabilityTokenDataInput {
@@ -65,9 +61,7 @@ export interface EvmWalletProfitabilityTokenDataInput {
   readonly symbol: string;
   readonly decimals: number;
   readonly logo: string;
-  readonly logoHash: string;
-  readonly thumbnail: string;
-  readonly possibleSpam?: boolean;
+  readonly possibleSpam: boolean;
 }
 
 export class EvmWalletProfitabilityTokenData {
@@ -97,8 +91,6 @@ export class EvmWalletProfitabilityTokenData {
       symbol: json.symbol,
       decimals: Number(json.decimals),
       logo: json.logo,
-      logoHash: json.logo_hash,
-      thumbnail: json.thumbnail,
       possibleSpam: json.possible_spam,
     };
     return EvmWalletProfitabilityTokenData.create(input);
@@ -173,17 +165,9 @@ export class EvmWalletProfitabilityTokenData {
    */
   public readonly logo: string;
   /**
-   * @description Logo hash of the token.
-   */
-  public readonly logoHash: string;
-  /**
-   * @description Thumbnail image URL of the token.
-   */
-  public readonly thumbnail: string;
-  /**
    * @description Indicates whether the token is possibly spam.
    */
-  public readonly possibleSpam?: boolean;
+  public readonly possibleSpam: boolean;
 
   private constructor(input: EvmWalletProfitabilityTokenDataInput) {
     this.tokenAddress = EvmAddress.create(input.tokenAddress);
@@ -203,8 +187,6 @@ export class EvmWalletProfitabilityTokenData {
     this.symbol = input.symbol;
     this.decimals = input.decimals;
     this.logo = input.logo;
-    this.logoHash = input.logoHash;
-    this.thumbnail = input.thumbnail;
     this.possibleSpam = input.possibleSpam;
   }
 
@@ -227,8 +209,6 @@ export class EvmWalletProfitabilityTokenData {
       symbol: this.symbol,
       decimals: String(this.decimals),
       logo: this.logo,
-      logo_hash: this.logoHash,
-      thumbnail: this.thumbnail,
       possible_spam: this.possibleSpam,
     }
   }
