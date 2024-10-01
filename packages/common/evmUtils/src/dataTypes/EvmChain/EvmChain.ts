@@ -296,6 +296,24 @@ export class EvmChain implements EvmChainable {
   }
 
   /**
+   * Returns FLOW mainnet chain
+   *
+   * @example EvmChain.FLOW
+   */
+  public static get FLOW() {
+    return EvmChain.create(747);
+  }
+
+  /**
+   * Returns FLOW testnet chain
+   *
+   * @example EvmChain.FLOW_TESTNET
+   */
+  public static get FLOW_TESTNET() {
+    return EvmChain.create(0x221);
+  }
+
+  /**
    * Create a new instance of EvmChain from any valid address input.
    *
    * @example
@@ -381,6 +399,8 @@ export class EvmChain implements EvmChainable {
       EvmChain.MOONRIVER,
       EvmChain.MOONBASE,
       EvmChain.LINEA_SEPOLIA,
+      EvmChain.FLOW,
+      EvmChain.FLOW_TESTNET,
     ];
   }
 
@@ -497,7 +517,9 @@ export class EvmChain implements EvmChainable {
       | '0x504'
       | '0x505'
       | '0x507'
-      | '0xe705';
+      | '0xe705'
+      | '0x2eb'
+      | '0x221';
   }
 
   /**
