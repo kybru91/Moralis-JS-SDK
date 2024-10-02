@@ -128,6 +128,8 @@ describe('EvmChain', () => {
     expect(EvmChain.MOONRIVER.apiHex).toBe('0x505');
     expect(EvmChain.MOONBASE.apiHex).toBe('0x507');
     expect(EvmChain.LINEA_SEPOLIA.apiHex).toBe('0xe705');
+    expect(EvmChain.FLOW.apiHex).toBe('0x2eb');
+    expect(EvmChain.FLOW_TESTNET.apiHex).toBe('0x221');
   });
 
   describe('metadata', () => {
